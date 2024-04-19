@@ -1,7 +1,7 @@
 package com.imc
 
-import android.content.Context
 import android.os.Bundle
+import android.util.Range
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.slider.RangeSlider
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,14 +18,27 @@ class MainActivity : AppCompatActivity() {
     private var isMaleSelected: Boolean = false
     private var isFemaleSelected: Boolean = false
 
+    // Current height
+    private var currentHeight: Int = 120
+
+    // Current weight
+    private var currentWeight: Int = 60
+
+    // Current age
+    private var currentAge: Int = 30
+
+
     /* OBJECTS: */
+    // Instruction texts:
+    private lateinit var instructionTxt: TextView
+
     // Male and female cards:
     private lateinit var maleCard: CardView
     private lateinit var femaleCard: CardView
 
     //Height:
-    private lateinit var heightValue: TextView
     private lateinit var rangeSlider: RangeSlider
+    private lateinit var heightValue: TextView
 
     //Weight:
     private lateinit var weightValue: TextView
@@ -39,9 +53,6 @@ class MainActivity : AppCompatActivity() {
     // Calculate button:
     private lateinit var calculateBtn: AppCompatButton
 
-    // Instruction texts:
-    private lateinit var instructionTxt: TextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -52,21 +63,23 @@ class MainActivity : AppCompatActivity() {
 
     // Find components
     private fun findComponent() {
+        instructionTxt = findViewById(R.id.welcome_txt)
+
         maleCard = findViewById(R.id.male_card)
         femaleCard = findViewById(R.id.female_card)
 
-        heightValue = findViewById(R.id.height_value)
         rangeSlider = findViewById(R.id.range_slider)
+        heightValue = findViewById(R.id.height_value)
 
         weightMinus = findViewById(R.id.weight_minus)
         weightPlus = findViewById(R.id.weight_plus)
+        weightValue = findViewById(R.id.weight_value)
 
         ageMinus = findViewById(R.id.age_minus)
         agePlus = findViewById(R.id.age_plus)
+        ageValue = findViewById(R.id.age_value)
 
         calculateBtn = findViewById(R.id.calculate_btn)
-
-        instructionTxt = findViewById(R.id.welcome_txt)
     }
 
     // Listeners
@@ -80,6 +93,24 @@ class MainActivity : AppCompatActivity() {
             femaleStatus()
             setCardColor()
             changeInstructions(isFemaleSelected)
+        }
+        rangeSlider.addOnChangeListener { _, value, _ ->
+            currentHeight = value.toInt()
+            val format = DecimalFormat("###")
+            val formated = format.format(value)
+            heightValue.text = "$formated CM"
+        }
+        weightMinus.setOnClickListener {
+            minusWeight()
+        }
+        weightPlus.setOnClickListener {
+            plusWeight()
+        }
+        ageMinus.setOnClickListener {
+            minusAge()
+        }
+        agePlus.setOnClickListener {
+            plusAge()
         }
     }
 
@@ -109,11 +140,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Change instructions
-    fun changeInstructions(isSelected: Boolean) {
+    private fun changeInstructions(isSelected: Boolean) {
         when {
             isSelected -> instructionTxt.text =
                 ContextCompat.getString(this, R.string.select_height)
         }
     }
 
+    // Minus weight button logic.
+    private fun minusWeight() {
+        currentWeight--
+        weightValue.text = currentWeight.toString()
+    }
+
+    // Plus weight button logic.
+    private fun plusWeight() {
+        currentWeight++
+        weightValue.text = currentWeight.toString()
+    }
+
+    // Minus age button logic.
+    private fun minusAge() {
+        currentAge--
+        ageValue.text = currentAge.toString()
+    }
+
+    // Plus age button logic.
+    private fun plusAge() {
+        currentAge++
+        ageValue.text = currentAge.toString()
+    }
 }
