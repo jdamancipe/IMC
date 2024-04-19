@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">IMC</string>
+    <string name="male">Hombre</string>
+    <string name="ic_male">Male icon</string>
+    <string name="female">Mujer</string>
+    <string name="ic_female">Female icon</string>
+    <string name="height">Altura</string>
+    <string name="height_value">160CM</string>
+    <string name="weight">Peso</string>
+    <string name="age">Edad</string>
+    <string name="calculate_button">Calcular</string>
+
+    <!-- Instructions -->
+    <string name="select_genre">Paso uno: selecciona tu género:</string>
+    <string name="select_height">Paso dos: selecciona tu altura.</string>
+
 </resources>

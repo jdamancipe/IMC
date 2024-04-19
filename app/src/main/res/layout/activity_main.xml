@@ -5,15 +5,328 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_app"
+    android:paddingHorizontal="15dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- WELCOME CARD -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/welcome_card"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="@color/component"
+        app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- WELCOME TEXT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/welcome_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_genre"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- MALE CARD -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/male_card"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        app:cardBackgroundColor="@color/component"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toStartOf="@id/female_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcome_card">
+
+        <!-- LINEAR LAYOUT FOR VECTOR AND TEXT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <!-- MALE VECTOR -->
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@string/ic_male"
+                android:src="@drawable/ic_male" />
+
+            <!-- MALE TEXT -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:textAllCaps="true"
+                android:textColor="@color/tittle_color"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- FEMALE CARD -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/female_card"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="@color/component"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/male_card"
+        app:layout_constraintTop_toBottomOf="@id/welcome_card">
+
+        <!-- LINEAR LAYOUT FOR FEMALE VECTOR AND TEXT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <!-- FEMALE VECTOR -->
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@string/ic_female"
+                android:src="@drawable/ic_female" />
+
+            <!-- FEMALE TEXT -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female"
+                android:textAllCaps="true"
+                android:textColor="@color/tittle_color"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- HEIGHT CARD -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/range_card"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="@color/component"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/male_card">
+
+        <!-- LINEAR FOR HEIGHT RANGE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- HEIGHT TEXT -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/height"
+                android:textAllCaps="true"
+                android:textColor="@color/tittle_color"
+                android:textSize="18sp" />
+
+            <!-- HEIGHT INITIAL VALUE -->
+            <TextView
+                android:id="@+id/height_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/height_value"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <!-- RANGE SLIDER -->
+            <com.google.android.material.slider.RangeSlider
+                android:id="@+id/range_slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:valueFrom="120"
+                android:valueTo="190"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- WEIGHT CARD -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/weight_card"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="@color/component"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/range_card">
+
+        <!-- LINEAR FOR WEIGHT CARD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- WEIGHT TEXT -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weight"
+                android:textAllCaps="true"
+                android:textColor="@color/tittle_color"
+                android:textSize="18sp" />
+
+            <!-- WEIGHT VALUE -->
+            <TextView
+                android:id="@+id/weight_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                tools:text="60" />
+
+            <!-- LINEAR FOR BUTTONS IN WEIGHT CARD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- PLUS BUTTON -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/weight_minus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="15dp"
+                    android:backgroundTint="@color/button"
+                    android:src="@drawable/ic_minus"
+                    app:fabCustomSize="50dp"
+                    app:tint="@color/white" />
+
+                <!-- MINUS BUTTON -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/weight_plus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/button"
+                    android:src="@drawable/ic_plus"
+                    app:fabCustomSize="50dp"
+                    app:tint="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- AGE CARD -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/age_card"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="@color/component"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weight_card">
+
+        <!-- LINEAR AGE CARD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age"
+                android:textAllCaps="true"
+                android:textColor="@color/tittle_color"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/age_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                tools:text="60" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/age_minus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_minus"
+                    app:backgroundTint="@color/button"
+                    app:fabCustomSize="50dp"
+                    app:tint="@color/white" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/age_plus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_plus"
+                    app:backgroundTint="@color/button"
+                    app:fabCustomSize="50dp"
+                    app:tint="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- CALCULATE BUTTON -->
+    <Button
+        android:id="@+id/calculate_btn"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/button"
+        android:text="@string/calculate_button"
+        android:layout_marginTop="15dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="27sp"
+        app:layout_constraintTop_toBottomOf="@id/age_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
