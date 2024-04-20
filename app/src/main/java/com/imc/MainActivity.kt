@@ -1,7 +1,8 @@
 package com.imc
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Range
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,8 +30,6 @@ class MainActivity : AppCompatActivity() {
 
 
     /* OBJECTS: */
-    // Instruction texts:
-    private lateinit var instructionTxt: TextView
 
     // Male and female cards:
     private lateinit var maleCard: CardView
@@ -53,6 +52,10 @@ class MainActivity : AppCompatActivity() {
     // Calculate button:
     private lateinit var calculateBtn: AppCompatButton
 
+    companion object {
+        const val IMC_KEY = "IMC_RESULT"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -63,8 +66,6 @@ class MainActivity : AppCompatActivity() {
 
     // Find components
     private fun findComponent() {
-        instructionTxt = findViewById(R.id.welcome_txt)
-
         maleCard = findViewById(R.id.male_card)
         femaleCard = findViewById(R.id.female_card)
 
@@ -87,12 +88,10 @@ class MainActivity : AppCompatActivity() {
         maleCard.setOnClickListener {
             maleStatus()
             setCardColor()
-            changeInstructions(isMaleSelected)
         }
         femaleCard.setOnClickListener {
             femaleStatus()
             setCardColor()
-            changeInstructions(isFemaleSelected)
         }
         rangeSlider.addOnChangeListener { _, value, _ ->
             currentHeight = value.toInt()
@@ -111,6 +110,10 @@ class MainActivity : AppCompatActivity() {
         }
         agePlus.setOnClickListener {
             plusAge()
+        }
+        calculateBtn.setOnClickListener {
+            val imc = imcResult()
+            navToResult(imc)
         }
     }
 
@@ -139,14 +142,6 @@ class MainActivity : AppCompatActivity() {
         isMaleSelected = false
     }
 
-    // Change instructions
-    private fun changeInstructions(isSelected: Boolean) {
-        when {
-            isSelected -> instructionTxt.text =
-                ContextCompat.getString(this, R.string.select_height)
-        }
-    }
-
     // Minus weight button logic.
     private fun minusWeight() {
         currentWeight--
@@ -169,5 +164,19 @@ class MainActivity : AppCompatActivity() {
     private fun plusAge() {
         currentAge++
         ageValue.text = currentAge.toString()
+    }
+
+    // Calculate the IMC
+    private fun imcResult(): Double {
+        val df = DecimalFormat("#.##")
+        return df.format(currentWeight / ((currentHeight * 0.01) * (currentHeight * 0.01)))
+            .toDouble()
+    }
+
+    // Calculate button intent
+    private fun navToResult(result: Double) {
+        val intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra(IMC_KEY, result)
+        startActivity(intent)
     }
 }

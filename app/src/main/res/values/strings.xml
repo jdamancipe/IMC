@@ -14,7 +14,25 @@
     <string name="centimeters">CM</string>
 
     <!-- Instructions -->
-    <string name="select_genre">Paso uno: selecciona tu género:</string>
-    <string name="select_height">Paso dos: selecciona tu altura.</string>
+    <string name="app_tittle">Calculadora IMC</string>
 
+    <!-- Result Activity -->
+    <string name="your_result">Tu resultado:</string>
+    <string name="Re_calculate">RE-CALCULAR</string>
+    <string name="underweight">Insuficiente</string>
+    <string name="normal_weight">Normal</string>
+    <string name="overweight">Sobrepeso</string>
+    <string name="obese">Obesidad</string>
+    <string name="error">Error</string>
+
+    <string name="underweight_des">Usted se encuentra dentro del rango de peso insuficiente.</string>
+    <string name="normal_des">Usted se encuentra dentro del rango de peso normal.</string>
+    <string name="overeight_des">Usted se encuentra dentro del rango de sobrepeso.</string>
+    <string name="obese_des">Usted se encuentra dentro del rango de obesidad.</string>
+    <string name="error_des">Parece que estás fuera de los límites…</string>
+
+    <!-- Content description -->
+    <string name="plus_button">Botón restar</string>
+    <string name="minus_button">Botón sumar</string>
+    <string name="emoji_image">Emoji image</string>
 </resources>
