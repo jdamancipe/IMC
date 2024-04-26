@@ -31,6 +31,8 @@
                 android:id="@+id/welcome_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:paddingTop="5dp"
                 android:text="@string/app_tittle"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -65,14 +67,17 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginTop="3dp"
                 android:layout_marginBottom="10dp"
                 android:contentDescription="@string/ic_male"
                 android:src="@drawable/ic_male" />
 
             <!-- MALE TEXT -->
             <TextView
+                android:id="@+id/male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
                 android:text="@string/male"
                 android:textAllCaps="true"
                 android:textColor="@color/tittle_color"
@@ -105,6 +110,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginBottom="10dp"
                 android:contentDescription="@string/ic_female"
                 android:src="@drawable/ic_female" />
@@ -113,6 +119,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
                 android:text="@string/female"
                 android:textAllCaps="true"
                 android:textColor="@color/tittle_color"
@@ -145,16 +152,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
                 android:text="@string/height"
                 android:textAllCaps="true"
                 android:textColor="@color/tittle_color"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_marginTop="12dp"/>
 
             <!-- HEIGHT INITIAL VALUE -->
             <TextView
                 android:id="@+id/height_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
                 android:text="@string/height_value"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -165,14 +175,15 @@
             <com.google.android.material.slider.RangeSlider
                 android:id="@+id/range_slider"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:stepSize="1"
                 android:valueFrom="120"
                 android:valueTo="190"
                 app:haloColor="@color/button"
                 app:thumbColor="@color/button"
-                app:tickColor="@color/button" />
+                app:tickColor="@color/button"
+                android:translationY="-5dp"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -203,23 +214,24 @@
                 android:text="@string/weight"
                 android:textAllCaps="true"
                 android:textColor="@color/tittle_color"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/poppinsregular" />
 
             <!-- WEIGHT VALUE -->
             <TextView
                 android:id="@+id/weight_value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="@string/weight_value"
                 android:textColor="@color/white"
                 android:textSize="35sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsregular" />
 
             <!-- LINEAR FOR BUTTONS IN WEIGHT CARD -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -276,21 +288,22 @@
                 android:text="@string/age"
                 android:textAllCaps="true"
                 android:textColor="@color/tittle_color"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:fontFamily="@font/poppinsregular"/>
 
             <TextView
                 android:id="@+id/age_value"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="@string/age_value"
                 android:textColor="@color/white"
                 android:textSize="35sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsregular"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -325,13 +338,16 @@
         android:id="@+id/calculate_btn"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/button"
+        android:fontFamily="@font/poppinsregular"
         android:text="@string/calculate_button"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="27sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/age_card" />
 
